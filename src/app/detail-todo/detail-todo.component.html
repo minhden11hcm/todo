@@ -1,0 +1,27 @@
+<div *ngIf="todo">
+  <h2>Detail</h2>
+  <h3>Tên công việc: {{ todo.name | uppercase }}</h3>
+  <h4>Mô tả công việc: {{ todo.description | uppercase }}</h4>
+  <div><span>id: </span>{{ todo.id }}</div>
+  <form [formGroup]="todoForm">
+    <label for="todo-name">Todo name: </label>
+    <input
+      formControlName="name"
+      [(ngModel)]="todo.name"
+      type="text"
+      id="todo-name"
+      placeholder="Todo name"
+    />
+    <label for="desc">Description: </label>
+    <input
+      formControlName="description"
+      [(ngModel)]="todo.description"
+      type="text"
+      id="desc"
+      placeholder="Description"
+    />
+
+    <button (click)="update()" [disabled]="todoForm.invalid">update</button>
+    <button type="button" (click)="goBack()">go back</button>
+  </form>
+</div>
